@@ -1,0 +1,13 @@
+services:
+
+  capska.capskareassurance.uploader.image_uploader:
+    class: Capska\CapskaReassurance\Uploader\ImageUploader
+    arguments:
+      - '@Capska.capskareassurance.repository.image_repository'
+
+  capska.capskareassurance.repository.image_repository:
+    class: Capska\CapskaReassurance\Repository\ReassuranceImageRepository
+    public: true
+    factory: ['@doctrine.orm.entity_manager', getRepository]
+    arguments:
+      - Capska\CapskaReassurance\Entity\ReassuranceImage
